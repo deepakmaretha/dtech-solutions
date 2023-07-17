@@ -2915,3 +2915,15 @@ section {
   color: var(--color-inverse);
   background-color: rgba(var(--color-primary-rgb), 0.8);
 }
+
+.marquee-container {
+  overflow: hidden;
+  width: 10%;
+}
+
+.marquee {
+  white-space: nowrap;
+  display: inline-block;
+  animation: marquee 1ms linear infinite;
+}
+
