@@ -1,10 +1,3 @@
-/**
-* Template Name: Append
-* Updated: Jun 20 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/append-bootstrap-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
@@ -208,5 +201,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   window.addEventListener('load', aosInit);
+
+  const form = document.getElementById("myForm");
+  const thankYouMessage = document.getElementById("thankYouMessage");
+
+  form.onsubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+      },
+      body: formData,
+    });
+
+    if (response.ok) {
+      // Clear form inputs
+      form.reset();
+      // Show the thank you message as a popup
+      thankYouMessage.style.display = "block";
+      setTimeout(() => {
+        thankYouMessage.style.display = "none";
+      }, 3000); // Hide the message after 3 seconds (adjust as needed)
+    }
+  };
 
 });

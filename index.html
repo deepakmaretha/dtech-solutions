@@ -58,7 +58,7 @@
           <li><a href="index.html#services">Services</a></li>
           <!-- <li><a href="index.html#portfolio">Portfolio</a></li> -->
           <li><a href="index.html#team">Team</a></li>
-          
+
 
           </li>
           <li><a href="index.html#contact">Contact</a></li>
@@ -108,8 +108,8 @@
     <!-- End Hero Section -->
 
     <!-- Clients Section - Home Page -->
-    
-   
+
+
     <section id="clients" class="clients">
       <div class="container-fluid" data-aos="fade-up">
         <div class="row gy-4">
@@ -1283,7 +1283,7 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+            <form id="myForm" action="https://formspree.io/f/xbjvlyad" method="post" class="form" data-aos="fade-up"
               data-aos-delay="200">
               <div class="row gy-4">
                 <div class="col-md-6">
@@ -1301,19 +1301,18 @@
                 <div class="col-md-12">
                   <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                 </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">
-                    Your message has been sent. Thank you!
-                  </div>
-
+            
                   <button type="submit">Send Message</button>
                 </div>
               </div>
             </form>
+            <div id="thankYouMessage" style="display: none; position: fixed; top: 90%; left: 50%; transform: translate(-50%, -50%); width: 600px; background-color: #26afeb; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px; z-index: 9999; border-radius: 5px; font-size: 16px; text-align: center;">
+              Message Has Been Successfully Sent, We Will Get Back To You Shortly. Thank you for your message!
+            </div>
+            
           </div>
+          
+          
           <!-- End Contact Form -->
         </div>
       </div>
@@ -1414,7 +1413,7 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
