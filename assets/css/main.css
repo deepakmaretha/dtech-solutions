@@ -2927,3 +2927,6 @@ section {
   animation: marquee 1ms linear infinite;
 }
 
+.contact_size {
+  font-size: 15px !important
+}
