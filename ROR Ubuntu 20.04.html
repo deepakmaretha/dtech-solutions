@@ -24,6 +24,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -92,6 +93,7 @@
         <div class="container">
           <ol>
             <li><a href="index.html">Home</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
             <li class="current">How To Install Ruby on Rails with RVM on Ubuntu 20.04</li>
           </ol>
         </div>
@@ -153,13 +155,58 @@
                 <p>
                   First, you’ll need to install or update GPG (GNU Privacy Guard) to the most recent version in order to contact a public key server and request a key associated with the given ID:
                 </p>
-                <code>
-                <p>
-                  sudo apt update <br>
-                  sudo apt install gnupg2
-                </p>
-              </code>
+                <div class="terminal">
+                  <span class="prompt">$</span>
+                  <code class="command">sudo apt update</code>
+                  <br>
+                  <span class="prompt">$</span>
+                  <code class="command">sudo apt install gnupg2</code>
+                </div>
               </div><!-- End post content -->
+              <p>
+                Next, you’ll request the RVM project’s public key to verify the legitimacy of your download:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">gpg2 --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB</code>
+               </div>
+               <p>
+                You’ll use the <b>curl</b> command to download the RVM installation script from the project’s website:
+               </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">\curl -sSL https://get.rvm.io -o rvm.sh</code>
+              </div>
+              <p>
+                The backslash that leads the command ensures that we are using the regular <b>curl</b> command and not any altered, aliased version. The <b>-s</b> flag indicates that the utility should operate in silent mode along with the <b>-S</b> flag to still allow <b>curl</b> to output errors if it fails. The <b>-L</b> flag tells the utility to follow redirects, and finally the <b>-o</b> flag indicates to write output to a file instead of standard output.
+              </p>
+              <p>
+                Once it is downloaded, if you would like to audit the contents of the script before applying it, run:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">nano rvm.sh</code>
+              </div>
+              <p>
+                To close out of nano, hit CTRL-X.
+              </p>
+              <p>
+                Now, you can pipe it to bash to install the latest stable Rails version which will also pull in the associated latest stable release of Ruby.
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">cat rvm.sh | bash -s stable --rails</code>
+              </div>
+              <p>
+                When the installation is complete, source the RVM scripts from the directory they were installed:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">source ~/.rvm/scripts/rvm</code>
+              </div>
+              <p>
+                You should now have a full Ruby on Rails environment configured.
+              </p>
 
               <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
