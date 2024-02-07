@@ -127,11 +127,7 @@
 
               <div class="content">
                 <p>
-                  Ruby on Rails is a popular web application framework designed to help you develop successful projects while writing less code.
-                </p>
-                  In this tutorial, you will install RVM, the stable release of Ruby on Rails (or the specific version of your choosing) via RVM, and Node.js as the JavaScript runtime required for some Rails features. You will also learn how to uninstall Rails at the end.
-                <p>
-                  
+                  Ruby on Rails is a popular web application framework designed to help you develop successful projects while writing less code.                 
                 </p>
 
                 <blockquote>
@@ -141,9 +137,7 @@
                 </blockquote>
 
                 <p>
-                  Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-                  Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-                  Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
+                  In this tutorial, you will install RVM, the stable release of Ruby on Rails (or the specific version of your choosing) via RVM, and Node.js as the JavaScript runtime required for some Rails features. You will also learn how to uninstall Rails at the end.
                 </p>
 
                 <h3>Prerequisites</h3>
@@ -209,7 +203,123 @@
               </p>
 
               <h3>Step 2 – Installing and Using Specific Ruby or Rails Versions</h3>
-              
+              <p>
+                If you need to install a specific version of Ruby for your application, rather than just the most recent one, you can do so with RVM. First, check to see which versions of Ruby are available by listing them:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">rvm list known</code>
+              </div>
+              <p>
+                Then, install the specific version of Ruby that you need through RVM, replacing the highlighted version number with your version of choice, such as <b>ruby-3.0.0</b> or just <b>3.0.0</b>:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">rvm install 3.0.0</code>
+              </div>
+              <p>
+                After the installation, you can list the available Ruby versions you have installed by typing:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">rvm list</code>
+              </div>
+              <p>
+                You can switch between the Ruby versions by typing:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">rvm use 3.0.0</code>
+              </div>
+              <p>
+                Since Rails is a gem, which is a standardized format that contains Ruby programs, you can also install various versions of Rails by using the <b>gem</b> command. Let’s first list the valid versions of Rails by doing a search:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">gem search '^rails$' --all</code>
+              </div>
+              <p>
+                Next, you can install your required version of Rails. Replace the highlighted version number with your version of choice, such as <b>7.0.2</b>.
+              </p>
+             
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">gem install rails -v 7.0.2</code>
+              </div>
+              <p>
+                You can use various Rails versions with each Ruby by creating gemsets and then installing Rails within those using the normal  <b>gem</b> commands.
+              </p>
+              <p>To create a gemset you will use:</p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">rvm gemset create gemset_name</code>
+              </div>
+              <p>
+                To specify a Ruby version to use when creating a gemset, use:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">rvm 3.0.0@gemset_name  --create</code>
+              </div>
+              <p>The gemsets allow us to have self-contained environments for gems as well as have multiple environments for each version of Ruby that you install.
+              </p>
+              <h3>Step 3  – Installing Node.js, a JavaScript Runtime (Optional)</h3>
+              <p>Out of the box, Rails does not require Node.js since <b>importmaps</b> is now used by default. In practice, you may run into apps that still require it.
+              </p>
+              <p>First, verify the Node.js script by outputting it to a file, then read it with <b>nano</b>:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">\curl -sSL https://deb.nodesource.com/setup_17.x -o nodejs.sh</code><br>
+                <span class="prompt">$</span>
+                <code class="command">nano nodejs.sh</code>
+              </div>
+              <p>Once you are satisfied with the Node.js script, you can install the NodeSource Node.js v17.x repo:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">cat nodejs.sh | sudo -E bash -</code>
+              </div>
+              <p>The <b>-E</b> flag used here will preserve the user’s existing environment variables.
+              </p>
+              <p>Now you can update apt and use it to install Node.js:
+              </p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">sudo apt update -y</code><br>
+                <span class="prompt">$</span>
+                <code class="command">sudo apt install nodejs -y</code>
+              </div>
+              <p>At this point, you can begin testing your Ruby on Rails installation and start to develop web applications.
+              </p>
+              <h3>Step 4 – Uninstalling RVM (Optional)</h3>
+              <p>If you no longer wish to use RVM, you can uninstall it by first removing the script calls in your <b>.bashrc</b> file and then removing the RVM files.
+              </p>
+              <p>First, remove the script calls with a text editor like nano:</p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">nano ~/.bashrc</code>
+              </div>
+
+              <div class="terminal">
+                <code class="command">... <br>
+                  # Add RVM to PATH for scripting. Make sure this is the last PATH variable change. <br>
+                  export PATH="$PATH:$HOME/.rvm/bin"</code>
+              </div>
+                <p>Delete the lines, then save and close the file.</p>
+                <p>Finally, remove RVM with the following command:</p>
+              <div class="terminal">
+                <span class="prompt">$</span>
+                <code class="command">cat nodejs.sh | sudo -E bash -</code>
+              </div>
+              <h3>Conclusion</h3>
+              <p>You have covered the basics of how to install RVM and Ruby on Rails here so that you can use multiple Ruby environments.</p>
+
+              <p>For your next steps, you can learn more about working with RVM and how to use RVM to manage your Ruby installations.</p>
+                
+              <p>If you’re new to Ruby, you can learn about programming in Ruby by following our How To Code in Ruby tutorial series.</p>
+                
+               <p>For more scalability, centralization, and control in your Ruby on Rails application, you may want to use it with PostgreSQL rather than its default sqlite3 database.</p>
             </div>
 
 
